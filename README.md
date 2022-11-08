@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 module "github_oidc" {
-  source  = "saidsef/terraform-aws-github-oidc/aws"
+  source  = "saidsef/github-oidc/aws"
   version = "main"
 
   attach_read_only_policy = true
