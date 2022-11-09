@@ -26,10 +26,20 @@ jobs:
     - name: Validate the configuration
       run: terraform validate
 
+  tfsec:
+    name: tfsec
+    runs-on: ubuntu-latest
+    needs: [validate]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
+
   caller-identity-check:
     if: ${{ github.event_name == 'push' }}
     name: Return the IAM user
-    needs: [validate]
+    needs: [validate, tfsec]
     permissions:
       contents: read
       id-token: write
@@ -45,7 +55,7 @@ jobs:
 
   auto-approve:
     runs-on: ubuntu-latest
-    needs: [validate, caller-identity-check]
+    needs: [validate, tfsec, caller-identity-check]
     if: ${{ github.event_name == 'pull_request' }}
     steps:
     - name: Auto Approve PR
