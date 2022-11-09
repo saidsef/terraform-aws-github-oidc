@@ -22,7 +22,7 @@ module "github_oidc" {
 
   attach_read_only_policy = true
   github_organisation     = "saidsef"
-  github_repositories     = [{ name = "platform", branches = ["*main", "pr-*", "*pull*", "*"] }]
+  github_repositories     = [{ name = "terraform-aws-github-oidc", branches = ["main", "pr-*", "*pull*", "*"] }]
   tags                    = var.tags
 }
 ```
