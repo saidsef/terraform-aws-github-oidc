@@ -26,10 +26,20 @@ jobs:
     - name: Validate the configuration
       run: terraform validate
 
-  caller-identity-check:
-    if: ${{ github.event_name == 'push' }}
-    name: Return the IAM user
+  tfsec:
+    name: tfsec
+    runs-on: ubuntu-latest
     needs: [validate]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.2
+
+  caller-identity-check:
+    if: ${{ github.event_name == 'pull_request' }}
+    name: Return the IAM user
+    needs: [validate, tfsec]
     permissions:
       contents: read
       id-token: write
@@ -44,9 +54,9 @@ jobs:
         aws sts get-caller-identity
 
   auto-approve:
-    runs-on: ubuntu-latest
-    needs: [validate, caller-identity-check]
     if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    needs: [validate, tfsec, caller-identity-check]
     steps:
     - name: Auto Approve PR
       uses: actions/github-script@v6

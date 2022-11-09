@@ -1,4 +1,4 @@
-# Terraform AWS GitHub OIDC Provider
+# Terraform AWS GitHub OIDC Provider [![CI](https://github.com/saidsef/terraform-aws-github-oidc/actions/workflows/ci.yaml/badge.svg)](#deployment) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE.md)
 
 This Terraform module enables you to configure GitHub Actions as an AWS IAM OIDC identity provider in AWS, which enables GitHub Actions to access resources within an AWS account(s) without requiring long-lived credentials to be stored as GitHub secrets.
 
@@ -22,7 +22,7 @@ module "github_oidc" {
 
   attach_read_only_policy = true
   github_organisation     = "saidsef"
-  github_repositories     = [{ name = "platform", branches = ["*main", "pr-*", "*pull*", "*"] }]
+  github_repositories     = [{ name = "terraform-aws-github-oidc", branches = ["main", "pr-*", "*pull*", "*"] }]
   tags                    = var.tags
 }
 ```
