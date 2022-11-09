@@ -6,8 +6,8 @@ force_detach_policies   = false
 github_organisation     = "saidsef"
 github_repositories = [
   {
-    "branches": null,
-    "name": null
+    "branches" : null,
+    "name" : null
   }
 ]
 iam_policy_name               = "github"
