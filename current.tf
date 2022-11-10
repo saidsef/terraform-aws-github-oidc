@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 data "aws_iam_openid_connect_provider" "provider" {
-  count = var.enabled && !var.create_oidc_provider ? 1 : 0
+  count = tobool(var.enabled) && !tobool(var.create_oidc_provider) ? 1 : 0
 
   url = format("https://%s", var.url)
 }
