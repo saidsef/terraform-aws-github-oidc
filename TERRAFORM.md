@@ -1,6 +1,10 @@
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.0 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
 
 ## Providers
 
@@ -37,9 +41,7 @@ No modules.
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Enable creation of resources | `bool` | `true` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Force detachment of policies attached to the IAM role | `string` | `false` | no |
 | <a name="input_github_organisation"></a> [github\_organisation](#input\_github\_organisation) | GitHub organisation name | `string` | n/a | yes |
-| <a name="input_github_repositories"></a> [github\_repositories](#input\_github\_repositories) | List of GitHub repository name and branches | <pre>list(object({<br>    name     = string<br>    branches = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "branches": null,<br>    "name": null<br>  }<br>]</pre> | no |
-| <a name="input_iam_policy_name"></a> [iam\_policy\_name](#input\_iam\_policy\_name) | Name of the IAM policy to be assumed by GitHub. | `string` | `"github"` | no |
-| <a name="input_iam_policy_path"></a> [iam\_policy\_path](#input\_iam\_policy\_path) | Path to the IAM policy | `string` | `"/"` | no |
+| <a name="input_github_repositories"></a> [github\_repositories](#input\_github\_repositories) | List of GitHub repository name(s) and branche names or patterns | <pre>list(object({<br>    name     = string<br>    branches = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "branches": null,<br>    "name": null<br>  }<br>]</pre> | no |
 | <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | Name of the IAM role | `string` | `"github-actions"` | no |
 | <a name="input_iam_role_path"></a> [iam\_role\_path](#input\_iam\_role\_path) | Path to the IAM role | `string` | `"/"` | no |
 | <a name="input_iam_role_permissions_boundary"></a> [iam\_role\_permissions\_boundary](#input\_iam\_role\_permissions\_boundary) | ARN of the permissions boundary to be used by the IAM role | `string` | `""` | no |

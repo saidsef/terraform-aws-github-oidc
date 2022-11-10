@@ -10,8 +10,6 @@ github_repositories = [
     "name" : null
   }
 ]
-iam_policy_name               = "github"
-iam_policy_path               = "/"
 iam_role_name                 = "github-actions"
 iam_role_path                 = "/"
 iam_role_permissions_boundary = ""
