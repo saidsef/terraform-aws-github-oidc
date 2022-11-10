@@ -32,6 +32,12 @@ module "github_oidc" {
 
 Please see [TERRAFORM.md](./TERRAFORM.md)
 
+## GitHub Actions
+
+Retrieve temporary credentials:
+
+https://github.com/saidsef/terraform-aws-github-oidc/blob/8e9ff77e824ad117cb42ee98f3ed755d28798f66/.github/workflows/ci.yaml#L47-L54
+
 ## Source
 
 Our latest and greatest source of `terraform-aws-github-oidc` can be found on [GitHub](https://github.com/saidsef/terraform-aws-github-oidc/fork). Fork us!
