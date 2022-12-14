@@ -41,11 +41,11 @@ jobs:
         cd exmaples/complete
         terraform init -backend=false -upgrade -reconfigure
         terraform validate
-    # - name: Exmaple Remote Validate
-    #   run: |
-    #     cd exmaples/remote
-    #     terraform init -backend=false -upgrade -reconfigure
-    #     terraform validate
+    - name: Exmaple Remote Validate
+      run: |
+        cd exmaples/remote
+        terraform init -backend=false -upgrade -reconfigure
+        terraform validate
 
   tflint:
     name: tflint
@@ -59,8 +59,8 @@ jobs:
         with:
           path: ~/.tflint.d/plugins
           key: ${{ runner.os }}-tflint
-      - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v3
+      - uses: terraform-linters/setup-tflint@v3
+        name: Setup TFLint
         with:
           github_token: ${{ github.token }}
           tflint_version: latest
@@ -79,7 +79,8 @@ jobs:
       - name: tfsec
         uses: aquasecurity/tfsec-action@v1.0.2
         with:
-          github_token: ${{ github.token }}
+          additional_args: "--force-all-dirs --concise-output --code-theme=dark"
+          version: "latest"
 
   caller-identity-check:
     if: contains(github.event_name, 'pull_request')
