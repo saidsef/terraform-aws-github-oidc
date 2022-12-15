@@ -12,6 +12,8 @@ jobs:
   validate:
     name: Validate
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     strategy:
       fail-fast: true
       matrix:
@@ -50,6 +52,8 @@ jobs:
   tflint:
     name: tflint
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     needs: [validate]
     steps:
       - name: Checkout code
@@ -72,6 +76,8 @@ jobs:
   tfsec:
     name: tfsec
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     needs: [validate]
     steps:
       - name: Checkout code
@@ -107,7 +113,7 @@ jobs:
     - name: Auto Approve PR
       uses: actions/github-script@v6
       with:
-       github_token: ${{ github.token }}
+       github-token: ${{ github.token }}
        script: |
         github.rest.pulls.createReview({
           owner: context.repo.owner,
