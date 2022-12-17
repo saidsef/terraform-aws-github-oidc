@@ -54,6 +54,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_repository"></a> [repository](#output\_repository) | n/a |
-| <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | n/a |
-| <a name="output_role_id"></a> [role\_id](#output\_role\_id) | n/a |
+| <a name="output_repositories"></a> [repositories](#output\_repositories) | List if GitHub repositories and branches |
+| <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | AWS role ARN |
+| <a name="output_role_id"></a> [role\_id](#output\_role\_id) | AWS role ID |
