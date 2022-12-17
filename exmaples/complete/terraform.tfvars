@@ -1,15 +1,10 @@
-attach_admin_policy     = false
-attach_read_only_policy = true
-create_oidc_provider    = true
-enabled                 = true
-force_detach_policies   = false
-github_organisation     = "saidsef"
-github_repositories = [
-  {
-    "branches" : null,
-    "name" : null
-  }
-]
+attach_admin_policy           = false
+attach_read_only_policy       = true
+create_oidc_provider          = true
+enabled                       = true
+force_detach_policies         = false
+github_organisation           = "saidsef"
+github_repositories           = [{ name = "terraform-aws-github-oidc", branches = ["main", "pr-*", "*pull*", "*"] }]
 iam_role_name                 = "github-actions"
 iam_role_path                 = "/"
 iam_role_permissions_boundary = ""
