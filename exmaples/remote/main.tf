@@ -11,7 +11,7 @@ module "github_oidc" {
   create_oidc_provider          = true
   enabled                       = true
   force_detach_policies         = false
-  github_organisation           = var.github_organisation
+  github_organisation           = "saidsef"
   github_repositories           = [{ name = "terraform-aws-github-oidc", branches = ["main", "pr-*", "*pull*", "*"] }]
   iam_role_name                 = "github-actions"
   iam_role_path                 = "/"
