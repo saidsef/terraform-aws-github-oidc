@@ -19,7 +19,7 @@ provider "aws" {
 
 module "github_oidc" {
   source  = "saidsef/github-oidc/aws"
-  version = "~> 1"
+  version = "~> 2"
 
   attach_read_only_policy = true
   github_organisation     = "saidsef"
