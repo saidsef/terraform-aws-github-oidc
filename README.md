@@ -39,7 +39,7 @@ Please see [TERRAFORM.md](./TERRAFORM.md)
 
 Retrieve temporary credentials:
 
-https://github.com/saidsef/terraform-aws-github-oidc/blob/8e9ff77e824ad117cb42ee98f3ed755d28798f66/.github/workflows/ci.yaml#L47-L54
+https://github.com/saidsef/terraform-aws-github-oidc/blob/29d6020587d06986388d84b2d10cbe266a1ea484/.github/workflows/ci.yaml#L79-L94
 
 ## Source
 
