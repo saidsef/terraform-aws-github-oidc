@@ -9,6 +9,7 @@ This Terraform module enables you to configure GitHub Actions as an AWS IAM OIDC
 - AWS Account(s) and credentials
 - GitHub repository
 - Terraform >= 1.x
+- ...
 - Profit?
 
 ## Deployment / Usage
