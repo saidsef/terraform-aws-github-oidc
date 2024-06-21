@@ -80,10 +80,14 @@ jobs:
   attest:
     name: attest
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     needs: [tfsec]
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - uses: actions/attest-build-provenance@v1
         with:
           subject-path: '**/*.tf'
