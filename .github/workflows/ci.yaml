@@ -24,6 +24,24 @@ jobs:
     uses: saidsef/saidsef/.github/workflows/tf-attest.yaml@main
     needs: [tfsec]
 
+  caller-identity-check:
+    if: contains(github.event_name, 'pull_request')
+    name: Return the IAM user
+    needs: [validate, tfsec]
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4.0.2
+      with:
+        aws-region: ${{ secrets.AWS_REGION }}
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions
+        role-session-name: ${{ github.event.repository.name }}-${{ github.ref_type }}
+    - run: |
+        aws sts get-caller-identity
+
   auto-approve:
     uses: saidsef/saidsef/.github/workflows/auto-approve.yaml@main
-    needs: [validate, tfsec]
+    needs: [validate, tfsec, caller-identity-check]
