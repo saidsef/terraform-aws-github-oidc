@@ -39,7 +39,7 @@ No modules.
 | <a name="input_attach_read_only_policy"></a> [attach\_read\_only\_policy](#input\_attach\_read\_only\_policy) | Attach ReadOnly policy | `bool` | `true` | no |
 | <a name="input_create_oidc_provider"></a> [create\_oidc\_provider](#input\_create\_oidc\_provider) | Create GitHub OIDC provider | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Enable resource creation | `bool` | `true` | no |
-| <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Force detach IAM policies | `string` | `false` | no |
+| <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Force detach IAM policies | `bool` | `false` | no |
 | <a name="input_github_organisation"></a> [github\_organisation](#input\_github\_organisation) | GitHub organisation name | `string` | n/a | yes |
 | <a name="input_github_repositories"></a> [github\_repositories](#input\_github\_repositories) | GitHub repository names and branches | <pre>list(object({<br/>    name     = string<br/>    branches = list(string)<br/>  }))</pre> | <pre>[<br/>  {<br/>    "branches": null,<br/>    "name": null<br/>  }<br/>]</pre> | no |
 | <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | IAM role name | `string` | `"github-actions"` | no |

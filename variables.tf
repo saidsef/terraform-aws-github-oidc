@@ -25,7 +25,7 @@ variable "enabled" {
 variable "force_detach_policies" {
   default     = false
   description = "Force detach IAM policies"
-  type        = string
+  type        = bool
 }
 
 variable "github_organisation" {
