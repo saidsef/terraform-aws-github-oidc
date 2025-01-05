@@ -14,7 +14,7 @@ jobs:
     uses: saidsef/saidsef/.github/workflows/tf-validate.yaml@main
     with:
       start-version: '0'
-      end-version: '9'
+      end-version: '10'
 
   tfsec:
     uses: saidsef/saidsef/.github/workflows/tf-security.yaml@main
