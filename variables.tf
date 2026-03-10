@@ -43,6 +43,11 @@ variable "github_repositories" {
     name     = null
   }]
   description = "GitHub repository names and branches"
+
+  validation {
+    condition     = length(var.github_repositories) > 0
+    error_message = "At least one GitHub repository must be specified."
+  }
 }
 
 variable "iam_role_name" {
