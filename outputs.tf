@@ -1,12 +1,18 @@
 output "role_id" {
   description = "AWS role ID"
-  value       = aws_iam_role.role[0].id
+  value       = try(aws_iam_role.role[0].id, null)
   sensitive   = false
 }
 
 output "role_arn" {
   description = "AWS role ARN"
-  value       = aws_iam_role.role[0].arn
+  value       = try(aws_iam_role.role[0].arn, null)
+  sensitive   = false
+}
+
+output "role_name" {
+  description = "AWS role name"
+  value       = try(aws_iam_role.role[0].name, null)
   sensitive   = false
 }
 
