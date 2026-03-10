@@ -1,14 +1,14 @@
 data "aws_partition" "current" {}
 
 locals {
-  repositories_branches = flatten([
+  repositories_branches = length(var.github_repositories) > 0 ? flatten([
     for repo in var.github_repositories : [
       for branch in repo.branches : {
         branch = branch
         name   = repo.name
       }
     ]
-  ])
+  ]) : []
 }
 
 data "aws_iam_policy_document" "assume_role" {
@@ -16,10 +16,13 @@ data "aws_iam_policy_document" "assume_role" {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
 
-    condition {
-      test     = "ForAnyValue:StringLike"
-      values   = [for repo in local.repositories_branches : format("repo:%s/%s:%s", var.github_organisation, repo.name, repo.branch)]
-      variable = format("%s:sub", var.url)
+    dynamic "condition" {
+      for_each = length(local.repositories_branches) > 0 ? [1] : []
+      content {
+        test     = "ForAnyValue:StringLike"
+        values   = [for repo in local.repositories_branches : format("repo:%s/%s:%s", var.github_organisation, repo.name, repo.branch)]
+        variable = format("%s:sub", var.url)
+      }
     }
 
     principals {
