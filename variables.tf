@@ -48,6 +48,11 @@ variable "github_repositories" {
     condition     = length(var.github_repositories) > 0
     error_message = "At least one GitHub repository must be specified."
   }
+
+  validation {
+    condition     = alltrue([for repo in var.github_repositories : length(repo.branches) > 0])
+    error_message = "Each GitHub repository must have at least one branch specified."
+  }
 }
 
 variable "iam_role_name" {
